@@ -63,7 +63,7 @@ else:
 
 
 
-jogador = {}
+"""jogador = {}
 gols = []
 jogador['nome'] = str(input('Qual o nome do jogador?: '))
 partidas = int(input(f'Quantas partidas o {jogador["nome"]} jogou?: '))
@@ -84,4 +84,50 @@ print('-='*30)
 print(f'O jogador {jogador["nome"]} jogou {partidas} partidas.')
 for i, v in enumerate(jogador['gols']):
     print(f' => Na partida {i}, marcou {v} gols. ')
-print(f'Foi um total de {jogador["Total"]} gols.')
+print(f'Foi um total de {jogador["Total"]} gols.')"""
+
+# EXERCÍCIO 05 -> Unindo Dicionários e Listas
+from ast import While
+
+
+galera = []
+pessoa = {}
+soma = média = 0
+while True:
+    pessoa.clear()
+    pessoa['nome'] = str(input('Nome: '))
+    while True:
+        pessoa['sexo'] = str(input('Sexo: [M/F] ')).upper()[0]
+        if pessoa['sexo'] in 'MF':
+            break
+        print('ERRO! Por favor digite, apenas M ou F ')
+    pessoa['idade'] = int(input('Idade: '))
+    soma += pessoa['idade']
+    galera.append(pessoa.copy())
+    while True:
+        resp = str(input('Quer continuar? [S/N] ')).upper()[0]
+        if resp in 'SN':
+            break
+        print('ERRO! Responda apenas Sim ou Não')
+    if resp == 'N':
+        break
+print('-=' * 30)
+print(galera)
+print(f'A) Ao todo temos {len(galera)} pessoas cadastradas.')
+média = soma / len(galera)
+print(f'B) A média de idade é de {média:5.2f} anos.')
+print(f'C) As mulheres cadastradas foram', end='')
+for p in galera:
+    if p['sexo'] == 'F':
+        print(f'{p["nome"]} ', end='')
+print()
+print('D) Listas das pessoas que estão acima da média: ', end='')
+for p in galera:
+    if p['idade'] >= média:
+        print('  ')
+        for k,v in p.items():
+            print(f'{k } = {v}', end=' ')
+        print()
+print("<<ENCERRADO>>")
+
+    
