@@ -86,8 +86,8 @@ for i, v in enumerate(jogador['gols']):
     print(f' => Na partida {i}, marcou {v} gols. ')
 print(f'Foi um total de {jogador["Total"]} gols.')"""
 
-# EXERCÍCIO 05 -> Unindo Dicionários e Listas
-from ast import While
+# EXERCÍCIO 05 -> Unindo Dicionários e Listas (Cadastro e Análise de Dados)
+"""from ast import While
 
 
 galera = []
@@ -116,7 +116,7 @@ print(galera)
 print(f'A) Ao todo temos {len(galera)} pessoas cadastradas.')
 média = soma / len(galera)
 print(f'B) A média de idade é de {média:5.2f} anos.')
-print(f'C) As mulheres cadastradas foram', end='')
+print(f'C) As mulheres cadastradas foram ', end=' ')
 for p in galera:
     if p['sexo'] == 'F':
         print(f'{p["nome"]} ', end='')
@@ -128,6 +128,60 @@ for p in galera:
         for k,v in p.items():
             print(f'{k } = {v}', end=' ')
         print()
-print("<<ENCERRADO>>")
+print("<<ENCERRADO>>")"""
+
+#EXERCÍCIO 06 -> CADASTRANDO JOGADORES E ADICIONANDO EM UMA LISTA
+
+time = []
+jogador = {}
+partidas = []
+
+while True:
+    jogador.clear()
+    jogador['nome'] = str(input('Digite o nome do Jogador: '))
+    tot = int(input(f'Quantas partidas {jogador["nome"]} jogou? '))
+    partidas.clear()
+    for c in range (0, tot):
+        partidas.append(int(input(f'Quantos gol na partida {c+1}? ')))
+    jogador['gols'] = partidas[:]
+    jogador['total'] = sum(partidas)
+    time.append(jogador.copy())
+    while True:
+        resp = str(input('Quer continuar? [S/N] ')).upper()[0]
+        if resp in 'SN':
+            break
+        print('ERRO! RESPONDA APENAS S OU N.')
+    if resp == 'N':
+        break
+print('-='* 30)
+print('cod ', end='')
+for i in jogador.keys():
+    print(f'{i:<15}', end='')
+print()
+print('-=' * 40 )
+for k,v in enumerate(time):
+    print(f'{k:>3} ', end='')
+    for d in v.values():
+        print(f'{str(d):<15}', end='')
+    print()
+print('-'*40 )
+while True:
+    busca = int(input('Mostrar dados de qual jogador? (999 para parar )'))
+    if busca == 999:
+        break
+    if busca >= len(time):
+        print(f'Não existe jogador com código {busca}!')
+    else:
+        print(f' -- LEVANTAMENTO DO JOGADOR {time[busca]["nome"]}')
+        for i,g in enumerate(time[busca]['gols']):
+            print(f'No jogo {i+1} fez {g}')
+        print('-' * 40)
+print('<<< VOLTE SEMPRE >>>')
+            
+    
+    
+    
+    
+
 
     
