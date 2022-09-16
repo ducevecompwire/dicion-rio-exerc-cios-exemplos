@@ -64,22 +64,24 @@ else:
 
 
 jogador = {}
+gols = []
 jogador['nome'] = str(input('Qual o nome do jogador?: '))
 partidas = int(input(f'Quantas partidas o {jogador["nome"]} jogou?: '))
-for i in range(partidas):
-    jogador['gols'] = list()
+for i in range(0, partidas):
     cont = 1
     cont = cont + i
     partida = int(input(f'Quantos gols na {cont}ª partida? : '))
-    jogador['gols'].append(partida[:])
+    gols.append(partida)
     partida += partida
+    jogador['gols'] = gols
     jogador['Total'] = partida
+    
 print(jogador)
 print('-='*30)
 for k,v in jogador.items():
     print(f'O campo {k} tem o valor de {v}')
 print('-='*30)
-for i in range(partidas):
-    print(f'O jogador {jogador["nome"]} jogou {jogador["Total"]} partidas.')
-    print(f'Na partida {i}, marcou {partida} gols. ')
-
+print(f'O jogador {jogador["nome"]} jogou {partidas} partidas.')
+for i, v in enumerate(jogador['gols']):
+    print(f' => Na partida {i}, marcou {v} gols. ')
+print(f'Foi um total de {jogador["Total"]} gols.')
