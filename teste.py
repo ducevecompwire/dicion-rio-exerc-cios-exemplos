@@ -9,7 +9,7 @@ def menu():
     print('2 - Listar alunos')
     print('3 - Cadastrar Professor')
     print('4 - Listar Professores')
-    print('6 - Sair')
+    print('5 - Sair')
 
 def cadastroAluno():
     nome = input('Digite o nome do aluno: ')
@@ -33,6 +33,9 @@ def listarAlunos():
     print('LISTA DE ALUNOS')
     for i in listaAlunos:
         print(i)
+    if listaAlunos == []:
+        print('Nenhum aluno cadastrado')
+        
     voltar = input('Deseja voltar ao menu? [S/N] ').upper()
     if voltar == 'S':
         menu()
@@ -60,6 +63,9 @@ def listarProfessores():
     print('LISTA DE PROFESSORES')
     for i in listaProfessores:
         print(i)
+    if listaProfessores == []:
+        print('Nenhum professor cadastrado')
+    
     voltar = input('Deseja voltar ao menu? [S/N] ').upper()
     if voltar == 'S':
         menu()
@@ -76,10 +82,8 @@ while True:
     elif dec == '3':
         cadastroProfessor()
     elif dec == '4':
-        listaProfessores()
+        listarProfessores()
     elif dec == '5':
-        menu()
-    elif dec == '6':
         break
         
     
